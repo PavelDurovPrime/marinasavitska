@@ -33,9 +33,12 @@
           <span></span><span></span><span></span>
         </button>
       </div>
-    </div>
+    </div>`;
 
-    <!-- Mobile drawer (outside container, full-width) -->
+  /* ── Drawer HTML (injected into <body>, NOT inside header) ── */
+  /* backdrop-filter on #site-header creates a new stacking context
+     that clips position:fixed children — so drawer must live in <body> */
+  const drawerHTML = `
     <nav class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
       <a href="index.html"         class="${isActive('index.html')}">Головна</a>
       <a href="consultations.html" class="${isActive('consultations.html')}">Консультації</a>
@@ -66,6 +69,9 @@
   const footer = document.getElementById('site-footer');
   if (header) header.innerHTML = headerHTML;
   if (footer) footer.innerHTML = footerHTML;
+
+  /* Drawer goes into <body> directly — avoids backdrop-filter clip */
+  document.body.insertAdjacentHTML('afterbegin', drawerHTML);
 
   /* ── Hamburger toggle ──────────────────────── */
   const hamburger = document.getElementById('nav-hamburger');
