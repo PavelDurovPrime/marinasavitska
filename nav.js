@@ -1,6 +1,7 @@
 /* ─────────────────────────────────────────────
    nav.js  — Shared header & footer injector
-   + scroll animations via IntersectionObserver
+   + Mobile hamburger drawer
+   + Scroll animations via IntersectionObserver
 ───────────────────────────────────────────── */
 
 (function () {
@@ -11,20 +12,37 @@
     return href === page ? 'active' : '';
   }
 
-  /* ── Header HTML (no logo — nav is centrepiece) */
+  /* ── Header HTML ───────────────────────────── */
   const headerHTML = `
     <div class="container inner" style="display:grid; grid-template-columns: 1fr auto 1fr; align-items: center;">
-      <div></div> <!-- Spacer for centering -->
+      <!-- Logo (visible on mobile) -->
+      <a href="index.html" class="site-logo" style="opacity:1;">Марина Савіцька</a>
+
+      <!-- Desktop nav (centred) -->
       <nav class="site-nav site-nav--lg">
         <a href="index.html"          class="${isActive('index.html')}">Головна</a>
         <a href="consultations.html"  class="${isActive('consultations.html')}">Консультації</a>
         <a href="about.html"          class="${isActive('about.html')}">Про мене</a>
         <a href="contacts.html"       class="${isActive('contacts.html')}">Контакти</a>
       </nav>
-      <div style="display:flex; justify-content: flex-end;">
+
+      <!-- Right side: desktop CTA + mobile hamburger -->
+      <div style="display:flex; justify-content: flex-end; align-items:center; gap:.75rem;">
         <a href="contacts.html" class="nav-cta">Записатися</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Меню" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </div>`;
+    </div>
+
+    <!-- Mobile drawer (outside container, full-width) -->
+    <nav class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <a href="index.html"         class="${isActive('index.html')}">Головна</a>
+      <a href="consultations.html" class="${isActive('consultations.html')}">Консультації</a>
+      <a href="about.html"         class="${isActive('about.html')}">Про мене</a>
+      <a href="contacts.html"      class="${isActive('contacts.html')}">Контакти</a>
+      <a href="contacts.html"      class="drawer-cta">Записатися на консультацію</a>
+    </nav>`;
 
   /* ── Footer HTML ───────────────────────────── */
   const footerHTML = `
@@ -49,6 +67,51 @@
   if (header) header.innerHTML = headerHTML;
   if (footer) footer.innerHTML = footerHTML;
 
+  /* ── Hamburger toggle ──────────────────────── */
+  const hamburger = document.getElementById('nav-hamburger');
+  const drawer    = document.getElementById('mobile-drawer');
+
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = drawer.classList.contains('open');
+      hamburger.classList.toggle('open', !isOpen);
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+      drawer.setAttribute('aria-hidden', String(isOpen));
+
+      if (!isOpen) {
+        drawer.style.display = 'flex';
+        // Force reflow for transition
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => drawer.classList.add('open'));
+        });
+        document.body.style.overflow = 'hidden';
+      } else {
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { drawer.style.display = 'none'; }, 350);
+      }
+    });
+
+    // Close drawer when a link is clicked
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { drawer.style.display = 'none'; }, 350);
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && drawer.classList.contains('open')) {
+        hamburger.click();
+      }
+    });
+  }
+
   /* ── Scroll-shadow on header ─────────────── */
   const onScroll = () => {
     if (header) {
@@ -62,7 +125,6 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // stagger children if flagged
         entry.target.querySelectorAll(':scope > *').forEach((child, i) => {
           child.style.setProperty('--i', i);
         });
@@ -71,7 +133,6 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  // Observe after DOM settles
   requestAnimationFrame(() => {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
