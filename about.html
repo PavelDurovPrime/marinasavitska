@@ -1,12 +1,54 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="uk">
 
 <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Про мене | Марина Савіцька</title>
+        <title>Про мене | Марина Савіцька — Психолог-психотерапевт</title>
         <meta name="description"
-                content="Психолог-психотерапевт Марина Савіцька. Символдрама, травматерапія. Багато практики." />
+                content="Психолог-психотерапевт Марина Савіцька. Символдрама, травматерапія, арт-терапія. 16+ років практики. Магістр психології. Онлайн та очно у Бердичеві." />
+        <meta name="keywords" content="психолог Бердичів, психотерапевт, символдрама, травматерапія, арт-терапія, Марина Савіцька, онлайн психолог" />
+        <link rel="canonical" href="https://paveldurovprime.github.io/marinasavitska/about.html" />
+        
+        <!-- Open Graph -->
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="Про мене | Марина Савіцька — Психолог-психотерапевт" />
+        <meta property="og:description" content="Психолог-психотерапевт Марина Савіцька. Символдрама, травматерапія, арт-терапія. 16+ років практики." />
+        <meta property="og:url" content="https://paveldurovprime.github.io/marinasavitska/about.html" />
+        <meta property="og:image" content="https://paveldurovprime.github.io/marinasavitska/img/personal/about_photo2.jpg" />
+        <meta property="og:locale" content="uk_UA" />
+        <meta property="og:site_name" content="Марина Савіцька — Психолог" />
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Марина Савіцька",
+          "jobTitle": "Психолог-психотерапевт",
+          "description": "Сертифікований психотерапевт за методом символдрами. 16+ років практики.",
+          "url": "https://paveldurovprime.github.io/marinasavitska/about.html",
+          "image": "https://paveldurovprime.github.io/marinasavitska/img/personal/about_photo2.jpg",
+          "telephone": "+380973539574",
+          "email": "yrisovnam@gmail.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "вул. Ринкова, 22",
+            "addressLocality": "Бердичів",
+            "addressCountry": "UA"
+          },
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Житомирський державний університет ім. І. Франка"
+          },
+          "sameAs": [
+            "https://www.instagram.com/marina.savytska.psy",
+            "https://www.facebook.com/share/18Sv2ocbo6/",
+            "https://t.me/mus2208"
+          ]
+        }
+        </script>
+
         <link rel="icon" href="img/logo/logo.jpg" type="image/jpeg" />
         <link rel="stylesheet" href="style.css" />
 </head>
@@ -170,13 +212,26 @@
                                 </div>
 
                                 <style>
+                                  .cert-grid {
+                                    display: grid;
+                                    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                                    gap: 1.25rem;
+                                  }
+                                  @media (max-width: 768px) {
+                                    .cert-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
+                                  }
                                   @media (max-width: 480px) {
                                     .cert-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
                                     .cert-card { cursor: pointer !important; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
                                   }
+                                  /* Certificates always visible — no stagger delay */
+                                  .cert-grid > div {
+                                    opacity: 1 !important;
+                                    transform: none !important;
+                                    transition: transform .4s, box-shadow .4s !important;
+                                  }
                                 </style>
-                                <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));gap:1.25rem;"
-                                        class="reveal stagger cert-grid">
+                                <div class="cert-grid">
 
                                         <!-- Диплом -->
                                         <div style="aspect-ratio:4/3;overflow:hidden;background:var(--cream-card);cursor:zoom-in;position:relative;
