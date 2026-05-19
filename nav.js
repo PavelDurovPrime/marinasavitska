@@ -59,8 +59,9 @@
         <a href="consultations.html">Консультації</a>
         <a href="about.html">Про мене</a>
         <a href="contacts.html">Контакти</a>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
+        <a href="https://www.instagram.com/marina.savytska.psy?utm_source=qr&igsh=MWZ2ZmNqY2cwYjJjYg==" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/share/18Sv2ocbo6/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://t.me/mus2208" target="_blank" rel="noopener">Telegram</a>
       </nav>
     </div>`;
 
