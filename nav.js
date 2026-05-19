@@ -62,6 +62,7 @@
         <a href="https://www.instagram.com/marina.savytska.psy?utm_source=qr&igsh=MWZ2ZmNqY2cwYjJjYg==" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/share/18Sv2ocbo6/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://t.me/mus2208" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://wa.me/0973539574" target="_blank" rel="noopener">WhatsApp</a>
       </nav>
     </div>`;
 
