@@ -52,7 +52,7 @@
     <div class="container inner">
       <div class="footer-brand">
         <a href="index.html" class="site-logo">Марина Савіцька</a>
-        <p class="footer-copy">© 2024 Марина Савіцька. Простір для відновлення.</p>
+        <p class="footer-copy">© 2026 Марина Савіцька. Простір для відновлення.</p>
       </div>
       <nav class="footer-nav">
         <a href="index.html">Головна</a>
