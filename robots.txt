@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paveldurovprime.github.io/marinasavitska/sitemap.xml
+Sitemap: https://marina-savytska.online/sitemap.xml

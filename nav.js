@@ -6,29 +6,33 @@
 
 (function () {
   /* ── Active page detection ─────────────────── */
-  const page = location.pathname.split('/').pop() || 'index.html';
+  const pathName = location.pathname.toLowerCase();
 
   function isActive(href) {
-    return href === page ? 'active' : '';
+    if (href === '/' || href === 'index.html') {
+      return (pathName === '/' || pathName === '/index.html' || pathName === '/index' || pathName === '') ? 'active' : '';
+    }
+    const cleanHref = href.replace('.html', '');
+    return (pathName.endsWith('/' + cleanHref) || pathName.endsWith('/' + cleanHref + '.html')) ? 'active' : '';
   }
 
   /* ── Header HTML ───────────────────────────── */
   const headerHTML = `
     <div class="container inner" style="display:grid; grid-template-columns: 1fr auto 1fr; align-items: center;">
       <!-- Logo (visible on mobile) -->
-      <a href="index.html" class="site-logo" style="opacity:1;">Марина Савіцька</a>
+      <a href="/" class="site-logo" style="opacity:1;">Марина Савіцька</a>
 
       <!-- Desktop nav (centred) -->
       <nav class="site-nav site-nav--lg">
-        <a href="index.html"          class="${isActive('index.html')}">Головна</a>
-        <a href="consultations.html"  class="${isActive('consultations.html')}">Консультації</a>
-        <a href="about.html"          class="${isActive('about.html')}">Про мене</a>
-        <a href="contacts.html"       class="${isActive('contacts.html')}">Контакти</a>
+        <a href="/"          class="${isActive('/')}">Головна</a>
+        <a href="consultations"  class="${isActive('consultations')}">Консультації</a>
+        <a href="about"          class="${isActive('about')}">Про мене</a>
+        <a href="contacts"       class="${isActive('contacts')}">Контакти</a>
       </nav>
 
       <!-- Right side: desktop CTA + mobile hamburger -->
       <div style="display:flex; justify-content: flex-end; align-items:center; gap:.75rem;">
-        <a href="contacts.html" class="nav-cta">Записатися</a>
+        <a href="contacts" class="nav-cta">Записатися</a>
         <button class="nav-hamburger" id="nav-hamburger" aria-label="Меню" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -40,25 +44,25 @@
      that clips position:fixed children — so drawer must live in <body> */
   const drawerHTML = `
     <nav class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-      <a href="index.html"         class="${isActive('index.html')}">Головна</a>
-      <a href="consultations.html" class="${isActive('consultations.html')}">Консультації</a>
-      <a href="about.html"         class="${isActive('about.html')}">Про мене</a>
-      <a href="contacts.html"      class="${isActive('contacts.html')}">Контакти</a>
-      <a href="contacts.html"      class="drawer-cta">Записатися на консультацію</a>
+      <a href="/"         class="${isActive('/')}">Головна</a>
+      <a href="consultations" class="${isActive('consultations')}">Консультації</a>
+      <a href="about"         class="${isActive('about')}">Про мене</a>
+      <a href="contacts"      class="${isActive('contacts')}">Контакти</a>
+      <a href="contacts"      class="drawer-cta">Записатися на консультацію</a>
     </nav>`;
 
   /* ── Footer HTML ───────────────────────────── */
   const footerHTML = `
     <div class="container inner">
       <div class="footer-brand">
-        <a href="index.html" class="site-logo">Марина Савіцька</a>
+        <a href="/" class="site-logo">Марина Савіцька</a>
         <p class="footer-copy">© 2026 Марина Савіцька. Простір для відновлення.</p>
       </div>
       <nav class="footer-nav">
-        <a href="index.html">Головна</a>
-        <a href="consultations.html">Консультації</a>
-        <a href="about.html">Про мене</a>
-        <a href="contacts.html">Контакти</a>
+        <a href="/">Головна</a>
+        <a href="consultations">Консультації</a>
+        <a href="about">Про мене</a>
+        <a href="contacts">Контакти</a>
         <a href="https://www.instagram.com/marina.savytska.psy?utm_source=qr&igsh=MWZ2ZmNqY2cwYjJjYg==" target="_blank" rel="noopener">Instagram</a>
         <a href="https://www.facebook.com/share/18Sv2ocbo6/" target="_blank" rel="noopener">Facebook</a>
         <a href="https://t.me/mus2208" target="_blank" rel="noopener">Telegram</a>
