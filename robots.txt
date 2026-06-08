@@ -1,4 +1,28 @@
 User-agent: *
 Allow: /
 
+# Google AI / AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# ChatGPT / OpenAI
+User-agent: GPTBot
+Allow: /
+
+# Claude (Anthropic)
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Gemini / Google Bard
+User-agent: Bard
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
 Sitemap: https://marina-savytska.online/sitemap.xml
