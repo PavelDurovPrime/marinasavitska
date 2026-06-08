@@ -841,3 +841,96 @@ a.link-underline:hover { background-size: 100% 1px; }
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/* ── About Page Hero (Vertical Video Layout) ─────────────────── */
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-areas:
+    "title video"
+    "desc  video"
+    "pills video";
+  gap: 1.5rem 4rem;
+  align-items: center;
+}
+
+.about-hero-title-area {
+  grid-area: title;
+}
+
+.about-hero-desc-area {
+  grid-area: desc;
+}
+
+.about-hero-pills-area {
+  grid-area: pills;
+}
+
+.about-hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: flex-start;
+}
+
+.about-hero-video-area {
+  grid-area: video;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-hero-video-container {
+  width: 100%;
+  max-width: 340px;
+  position: relative;
+}
+
+.vertical-video-wrapper {
+  position: relative;
+  aspect-ratio: 464 / 848;
+  background: var(--cream-card);
+  border-radius: 16px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 20px 48px rgba(26,25,23,0.12);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.vertical-video-wrapper:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 30px 60px rgba(26,25,23,0.18);
+}
+
+.vertical-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "video"
+      "desc"
+      "pills";
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .about-hero-video-container {
+    max-width: 290px;
+  }
+
+  .about-hero-desc-area {
+    margin-top: 0.5rem;
+  }
+
+  .about-hero-pills {
+    justify-content: center;
+  }
+}
+
