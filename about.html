@@ -152,7 +152,7 @@
         <!-- ══ PHILOSOPHY & EDUCATION ════════════════════════════════ -->
         <section class="section" style="position: relative;">
                 <div class="container">
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;" class="reveal stagger">
+                        <div class="about-philosophy-grid reveal stagger">
 
                                 <div style="position: relative;">
                                         <span class="deco-number"
@@ -246,26 +246,7 @@
                                                 onmouseout="this.style.opacity='.7'">&times;</button>
                                 </div>
 
-                                <style>
-                                  .cert-grid {
-                                    display: grid;
-                                    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                                    gap: 1.25rem;
-                                  }
-                                  @media (max-width: 768px) {
-                                    .cert-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 1rem !important; }
-                                  }
-                                  @media (max-width: 480px) {
-                                    .cert-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 0.75rem !important; }
-                                    .cert-card { cursor: pointer !important; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-                                  }
-                                  /* Certificates always visible — no stagger delay */
-                                  .cert-grid > div {
-                                    opacity: 1 !important;
-                                    transform: none !important;
-                                    transition: transform .4s, box-shadow .4s !important;
-                                  }
-                                </style>
+
                                 <div class="cert-grid">
 
                                         <!-- Диплом -->

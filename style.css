@@ -665,20 +665,137 @@ a.link-underline:hover { background-size: 100% 1px; }
   margin-bottom: 3rem;
 }
 
+/* ── Responsive Layout Grid Classes ──────────────────────── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  align-items: stretch;
+  min-height: 80vh;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+.help-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.about-strip-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+.faq-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.about-philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+}
+.consultation-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.price-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 6rem;
+  align-items: start;
+}
+.topics-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: start;
+}
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+.cert-grid > div {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform .4s, box-shadow .4s !important;
+}
+.cert-card {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
 /* ── ≤ 900px — tablet tweaks ──────────────────────────────────── */
 @media (max-width: 900px) {
   :root { --px: clamp(1.25rem, 4vw, 3rem); }
 
-  /* hero 2-col → 1-col */
-  [style*="grid-template-columns:1fr 1fr"] {
+  /* Grid stack overrides */
+  .hero-grid,
+  .philosophy-grid,
+  .about-strip-grid,
+  .about-philosophy-grid,
+  .consultation-row-grid,
+  .contacts-grid,
+  .booking-grid,
+  .topics-grid,
+  .faq-grid {
     grid-template-columns: 1fr !important;
   }
-  [style*="grid-template-columns:180px 1fr"] {
-    grid-template-columns: 1fr !important;
-  }
+
+  /* legacy attribute selector fallbacks */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns: 180px 1fr"],
   [style*="grid-template-columns:1fr 1.5fr"],
+  [style*="grid-template-columns: 1fr 1.5fr"],
   [style*="grid-template-columns:1fr 1.4fr"],
-  [style*="grid-template-columns:1fr 2fr"] {
+  [style*="grid-template-columns: 1fr 1.4fr"],
+  [style*="grid-template-columns:1fr 2fr"],
+  [style*="grid-template-columns: 1fr 2fr"] {
     grid-template-columns: 1fr !important;
   }
   .hero-bg-accent {
@@ -709,6 +826,12 @@ a.link-underline:hover { background-size: 100% 1px; }
   .display  { font-size: clamp(2.4rem, 10vw, 3.8rem); }
   .headline { font-size: clamp(1.6rem, 7vw, 2.4rem); }
   .subhead  { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+  
+  /* SEO & Accessibility: body small text must be at least 16px on mobile */
+  .body-sm {
+    font-size: 1rem !important; /* 16px */
+    line-height: 1.6 !important;
+  }
 
   /* ── Section spacing ─────────────────────────────── */
   .section    { padding-block: clamp(3rem, 8vw, 5rem); }
@@ -722,7 +845,6 @@ a.link-underline:hover { background-size: 100% 1px; }
   }
 
   /* ── Hero ────────────────────────────────────────── */
-  /* hero grid → stack */
   .hero-img { min-height: 55vw; max-height: 70vw; }
   [style*="padding-right:3rem"] { padding-right: 0 !important; padding-bottom: 3rem !important; }
   [style*="min-height:80vh"] { min-height: unset !important; }
@@ -736,17 +858,62 @@ a.link-underline:hover { background-size: 100% 1px; }
     border-bottom: 1px solid rgba(255,255,255,.08);
   }
 
-  /* ── All 2-col grids → 1-col ─────────────────────── */
-  [style*="grid-template-columns:1fr 1fr"],
-  [style*="grid-template-columns:1fr 1.5fr"],
-  [style*="grid-template-columns:1fr 1.4fr"],
-  [style*="grid-template-columns:1fr auto"],
-  [style*="grid-template-columns:180px 1fr"],
-  [style*="grid-template-columns:1fr 2fr"],
-  [style*="grid-template-columns:repeat(2,1fr)"],
-  [style*="grid-template-columns:200px 1fr"] {
+  /* ── Grid Stacking ───────────────────────────────── */
+  .hero-grid,
+  .services-grid,
+  .philosophy-grid,
+  .values-grid,
+  .help-grid,
+  .about-strip-grid,
+  .faq-grid,
+  .about-philosophy-grid,
+  .consultation-row-grid,
+  .contacts-grid,
+  .booking-grid,
+  .topics-grid {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
+  }
+
+  /* Legacy attribute selector stacks */
+  [style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns:1fr 1.5fr"],
+  [style*="grid-template-columns: 1fr 1.5fr"],
+  [style*="grid-template-columns:1fr 1.4fr"],
+  [style*="grid-template-columns: 1fr 1.4fr"],
+  [style*="grid-template-columns:1fr auto"],
+  [style*="grid-template-columns: 1fr auto"],
+  [style*="grid-template-columns:180px 1fr"],
+  [style*="grid-template-columns: 180px 1fr"],
+  [style*="grid-template-columns:1fr 2fr"],
+  [style*="grid-template-columns: 1fr 2fr"],
+  [style*="grid-template-columns:repeat(2,1fr)"],
+  [style*="grid-template-columns: repeat(2,1fr)"],
+  [style*="grid-template-columns: repeat(2, 1fr)"],
+  [style*="grid-template-columns:200px 1fr"],
+  [style*="grid-template-columns: 200px 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+
+  .cta-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+  .cta-grid a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+
+  /* Responsive padding override helper */
+  .responsive-padding {
+    padding: 1.5rem !important;
   }
 
   /* ── Philosophy side label — hide on mobile ──────── */
@@ -791,7 +958,7 @@ a.link-underline:hover { background-size: 100% 1px; }
   /* ── Marquee ─────────────────────────────────────── */
   .marquee-inner { gap: 2.5rem; }
 
-  /* ── About page: cert grid ───────────────────────── */
+  /* ── About page: cert grid fallbacks ──────────────── */
   [style*="grid-template-columns:repeat(3"] {
     grid-template-columns: 1fr 1fr !important;
   }
@@ -831,16 +998,31 @@ a.link-underline:hover { background-size: 100% 1px; }
   .headline { font-size: clamp(1.4rem, 8vw, 2rem); }
 
   /* Price grid stays 2-col but tighter */
+  .price-card-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
   [style*="grid-template-columns:1fr 1fr"][style*="gap:2rem"] {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
   }
+
 
   /* Messenger icon grid */
   [style*="grid-template-columns: repeat(auto-fill"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
+
+/* ── ≤ 380px — narrow mobile ─────────────────────────────────── */
+@media (max-width: 380px) {
+
+  .social-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 
 /* ── About Page Hero (Vertical Video Layout) ─────────────────── */
 .about-hero-grid {
