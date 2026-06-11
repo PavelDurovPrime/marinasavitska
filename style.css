@@ -1024,6 +1024,61 @@ a.link-underline:hover { background-size: 100% 1px; }
 }
 
 
+/* ── Skip Link (keyboard accessibility) ──────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  padding: .75rem 1.5rem;
+  text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ── Contact icon boxes ──────────────────────────────────────── */
+.contact-icon-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--ink-mid);
+  padding: 1rem 0.5rem;
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 2px;
+  transition: background .3s ease, color .3s ease, transform .3s ease, box-shadow .3s ease;
+}
+.contact-icon-box:hover {
+  background: var(--ink);
+  color: var(--cream);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+.contact-icon-box svg {
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+.contact-icon-box:hover svg {
+  opacity: 1;
+  transform: scale(1.1);
+}
+.contact-icon-box span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 /* ── About Page Hero (Vertical Video Layout) ─────────────────── */
 .about-hero-grid {
   display: grid;

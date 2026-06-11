@@ -12,6 +12,7 @@
   </script>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://www.google-analytics.com https://formspree.io; frame-src https://maps.google.com; object-src 'none'; base-uri 'self';" />
   <title>Психолог Онлайн та в Бердичеві — Консультації і ціни | Марина Савіцька</title>
   <meta name="description" content="Психологічна консультація онлайн та у Бердичеві. Індивідуальна — від 1 500 ₴, парна — від 1 800 ₴. Підліткова терапія. Психолог Марина Савіцька — 16+ років практики."/>
   <meta name="keywords" content="психолог онлайн, онлайн психолог, психотерапевт онлайн, психолог Бердичів, онлайн психолог Бердичів, вартість консультації психолога, психотерапія онлайн, індивідуальна терапія, парна терапія"/>
@@ -39,6 +40,8 @@
   }
   </script>
   
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png" />
   <link rel="icon" type="image/png" sizes="96x96" href="favicon.png" />
   <link rel="icon" type="image/png" sizes="48x48" href="favicon.png" />
@@ -47,8 +50,9 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
+<a href="#main-content" class="skip-link">Перейти до основного контенту</a>
 <header id="site-header"></header>
+<main id="main-content">
 
 <!-- ══ PAGE HERO ════════════════════════════════════════════ -->
 <section class="section-lg bg-warm" style="padding-top:clamp(4rem,10vw,7rem); overflow: hidden; position: relative;">
@@ -207,10 +211,10 @@
           Також можна написати напряму у месенджери.
         </p>
         <div style="display:flex;flex-direction:column;gap:1.5rem;">
-          <a href="https://t.me/mus2208" target="_blank" rel="noopener" class="link-underline" style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:.75rem; font-weight: 500;">
+          <a href="https://t.me/mus2208" target="_blank" rel="noopener noreferrer" class="link-underline" style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:.75rem; font-weight: 500;">
             <span style="font-size:1.3rem; color: var(--accent);">✈</span> Telegram
           </a>
-          <a href="https://wa.me/0973539574" target="_blank" rel="noopener" class="link-underline" style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:.75rem; font-weight: 500;">
+          <a href="https://wa.me/380973539574" target="_blank" rel="noopener noreferrer" class="link-underline" style="font-size:14px;color:var(--ink);display:flex;align-items:center;gap:.75rem; font-weight: 500;">
             <span style="font-size:1.3rem; color: var(--accent);">💬</span> WhatsApp
           </a>
         </div>
@@ -246,43 +250,17 @@
           <p style="font-family:'Noto Serif',serif;font-size:1.3rem;color:var(--ink)">Дякую! Запит надіслано.</p>
           <p style="font-size:0.9rem; color:var(--ink-light); margin-top:1rem;">Я зв'яжуся з вами для узгодження часу.</p>
         </div>
-        <script>
-          (function(){
-            var form = document.getElementById('booking-form');
-            if(!form) return;
-            form.addEventListener('submit', async function(e){
-              e.preventDefault();
-              var btn = form.querySelector('button[type=submit]');
-              btn.textContent = 'Надсилання…';
-              btn.disabled = true;
-              var data = new FormData(form);
-              try {
-                var res = await fetch(form.action, {
-                  method: 'POST', body: data,
-                  headers: { 'Accept': 'application/json' }
-                });
-                if(res.ok){
-                  form.style.display = 'none';
-                  document.getElementById('booking-success').style.display = 'block';
-                } else {
-                  btn.textContent = 'Помилка — спробуйте ще раз';
-                  btn.disabled = false;
-                }
-              } catch(err){
-                btn.textContent = 'Помилка з\'єднання';
-                btn.disabled = false;
-              }
-            });
-          })();
-        </script>
       </div>
+
 
     </div>
   </div>
 </section>
 
+</main>
 <footer id="site-footer"></footer>
 
 <script src="nav.js" defer></script>
+<script src="forms.js" defer></script>
 </body>
 </html>
